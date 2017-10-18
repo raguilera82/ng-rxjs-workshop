@@ -24,4 +24,12 @@ export class NotificationsComponent implements OnInit {
     this.service.showError('Error', 'Error in the component');
   }
 
+  showInfo() {
+    this.service.showInfo('Info', 'Info in the component');
+  }
+
+  showWarn() {
+    this.service.showWarning('Warn', 'Warning in the component');
+  }
+
 }
