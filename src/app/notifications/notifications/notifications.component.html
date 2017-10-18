@@ -1,3 +1,3 @@
-<p-growl [(value)]="msgs"></p-growl>
-
 <button (click)="showError()">Trigger Error</button>
+
+<app-primeng-notification [notification]="notification$ | async"></app-primeng-notification>

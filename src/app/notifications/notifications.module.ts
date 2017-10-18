@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotificationsComponent } from './notifications/notifications.component';
 import {GrowlModule} from 'primeng/primeng';
+import { PrimengNotificationComponent } from './primeng-notification/primeng-notification.component';
 
 @NgModule({
   imports: [
@@ -11,6 +12,6 @@ import {GrowlModule} from 'primeng/primeng';
   ],
   providers: [NotificationsService],
   exports: [NotificationsComponent],
-  declarations: [NotificationsComponent]
+  declarations: [NotificationsComponent, PrimengNotificationComponent]
 })
 export class NotificationsModule { }

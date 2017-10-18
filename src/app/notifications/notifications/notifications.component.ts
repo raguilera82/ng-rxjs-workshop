@@ -1,27 +1,23 @@
-import { NotificationsService } from './../notifications.service';
-import { Notification } from './../notification';
-import { Component, OnInit } from '@angular/core';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+
+import { Notification } from './../notification';
+import { NotificationsService } from './../notifications.service';
 
 @Component({
   selector: 'app-notifications',
   templateUrl: './notifications.component.html',
-  styleUrls: ['./notifications.component.css']
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NotificationsComponent implements OnInit {
 
   msgs: Notification[];
+  notification$: Observable<Notification>;
 
   constructor(private service: NotificationsService) { }
 
   ngOnInit() {
-    this.service.getNotification().subscribe(
-      noti => {
-        this.msgs = [];
-        this.msgs = [...this.msgs, noti];
-      }
-    );
+    this.notification$ = this.service.getNotification();
   }
 
   showError() {
