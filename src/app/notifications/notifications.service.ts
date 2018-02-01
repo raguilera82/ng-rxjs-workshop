@@ -5,10 +5,10 @@ import { Notification } from './notification';
 
 export class NotificationsService {
 
-  showNotificationSource: ReplaySubject<Notification> = new ReplaySubject();
+  notificationSubject: ReplaySubject<Notification> = new ReplaySubject();
 
   getNotification(): Observable<Notification> {
-    return this.showNotificationSource.asObservable();
+    return this.notificationSubject.asObservable();
   }
 
   public showError(summary: string, msg: string) {
@@ -30,7 +30,7 @@ export class NotificationsService {
       detail: msg
     };
 
-    this.showNotificationSource.next(notification);
+    this.notificationSubject.next(notification);
   }
 
 }
