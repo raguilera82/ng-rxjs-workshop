@@ -20,23 +20,10 @@ export class NotificationsComponent implements OnInit {
   notification$: Observable<Notification>;
 
   constructor(
-    public service: NotificationsService,
     public store: Store<fromRoot.State>) { }
 
   ngOnInit() {
     this.notification$ = this.store.select(state => state.notifications.notification);
-  }
-
-  showError() {
-    this.service.showError('Error', 'Info in the component');
-  }
-
-  showInfo() {
-    this.service.showInfo('Info', 'Info in the component');
-  }
-
-  showWarn() {
-    this.service.showWarning('Warn', 'Warning in the component');
   }
 
 }

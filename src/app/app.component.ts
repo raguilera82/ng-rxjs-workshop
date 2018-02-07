@@ -1,3 +1,4 @@
+import { NotificationsService } from './notifications/notifications.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  
+  constructor(private notiService: NotificationsService) {}
+
+  showError() {
+    this.notiService.showError('Error', 'Info in the component');
+  }
+
+  showInfo() {
+    this.notiService.showInfo('Info', 'Info in the component');
+  }
+
+  showWarn() {
+    this.notiService.showWarning('Warn', 'Warning in the component');
+  }
+
 }
