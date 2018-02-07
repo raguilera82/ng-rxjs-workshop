@@ -1,15 +1,17 @@
-import { Observable } from 'rxjs/Observable';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { Store } from '@ngrx/store';
+import { Injectable } from '@angular/core';
 
 import { Notification } from './notification';
 
+import * as fromNotifications from './notifications-reducer';
+import * as NotificationsActions from './notifications-actions';
+
+@Injectable()
 export class NotificationsService {
 
-  notificationSubject: ReplaySubject<Notification> = new ReplaySubject();
 
-  getNotification(): Observable<Notification> {
-    return this.notificationSubject.asObservable();
-  }
+  constructor(private store: Store<fromNotifications.State>) {}
+
 
   public showError(summary: string, msg: string) {
     this.showNotification('error', summary, msg);
@@ -29,8 +31,8 @@ export class NotificationsService {
       summary: summary,
       detail: msg
     };
-
-    this.notificationSubject.next(notification);
+    console.log('Disparo la acción con ' + notification.detail);
+    this.store.dispatch(new NotificationsActions.ShowNotification(notification));
   }
 
 }
