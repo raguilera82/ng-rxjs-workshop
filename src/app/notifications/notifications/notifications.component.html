@@ -1,1 +1,1 @@
-<app-primeng-notification [notification]="notification$ | async"></app-primeng-notification>
+<p *ngIf="(notification$ | async)">{{notification$ | async | json}}</p>

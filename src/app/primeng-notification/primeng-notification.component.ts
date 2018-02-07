@@ -1,6 +1,7 @@
+import { Notification } from './../notifications/notification';
 import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
 
-import { Notification } from '../notification';
+
 
 @Component({
   selector: 'app-primeng-notification',

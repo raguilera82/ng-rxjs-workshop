@@ -1,20 +1,24 @@
-import { AppNotiComponent } from './app-noti.component';
-import { reducers } from './reducers';
-import { StoreModule } from '@ngrx/store';
-import { NotificationsModule } from './notifications/notifications.module';
-import { BrowserModule } from '@angular/platform-browser';
+import { NotiComponent } from './noti.component';
+import { PrimengNotificationComponent } from './primeng-notification/primeng-notification.component';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { StoreModule } from '@ngrx/store';
+import { GrowlModule } from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
+import { NotificationsModule } from './notifications/notifications.module';
+import { reducers } from './reducers';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppNotiComponent
+    NotiComponent,
+    PrimengNotificationComponent
   ],
   imports: [
     BrowserModule,
     NotificationsModule,
+    GrowlModule,
     StoreModule.forRoot(reducers)
   ],
   providers: [],

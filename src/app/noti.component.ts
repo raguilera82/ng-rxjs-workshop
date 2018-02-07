@@ -1,18 +1,15 @@
-import { NotificationsService } from './notifications/notifications.service';
+import { Store } from '@ngrx/store';
 import { NotificationsComponent } from './notifications/notifications/notifications.component';
 import { Component } from '@angular/core';
 import * as fromRoot from './reducers';
-import { Store } from '@ngrx/store';
 
 @Component({
     selector: 'app-noti',
-    template: `<p *ngIf="(notification$ | async)">{{notification$ | async | json}}</p>`
+    template: `<app-primeng-notification [notification]="notification$ | async"></app-primeng-notification>`
 })
-export class AppNotiComponent extends NotificationsComponent {
-
+export class NotiComponent extends NotificationsComponent {
     constructor(
         public store: Store<fromRoot.State>) {
             super(store);
     }
-    
 }
