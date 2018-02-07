@@ -31,7 +31,6 @@ export class NotificationsService {
       summary: summary,
       detail: msg
     };
-    console.log('Disparo la acción con ' + notification.detail);
     this.store.dispatch(new NotificationsActions.ShowNotification(notification));
   }
 
