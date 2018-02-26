@@ -20,10 +20,10 @@ export class NotificationsComponent implements OnInit {
   notification$: Observable<Notification>;
 
   constructor(
-    public store: Store<fromRoot.State>) { }
+    public store: Store<fromNotifications.State>) { }
 
   ngOnInit() {
-    this.notification$ = this.store.select(state => state.notifications.notification);
+    this.notification$ = this.store.select(state => state.notification);
   }
 
 }

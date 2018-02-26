@@ -17,9 +17,9 @@ import { reducers } from './reducers';
   ],
   imports: [
     BrowserModule,
-    NotificationsModule,
     GrowlModule,
-    StoreModule.forRoot(reducers)
+    StoreModule.forRoot({}),
+    NotificationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

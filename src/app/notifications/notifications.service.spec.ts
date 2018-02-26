@@ -1,12 +1,28 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
+import { combineReducers, Store, StoreModule } from '@ngrx/store';
 
+import { Notification } from './notification';
+import * as NotificationsActions from './notifications-actions';
+import * as fromNotifications from './notifications-reducer';
 import { NotificationsService } from './notifications.service';
 
 describe('NotificationsService', () => {
+
+  let store: Store<fromNotifications.State>;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [
+        StoreModule.forRoot({
+          'notifications': combineReducers(fromNotifications.reducer)
+        })],
       providers: [NotificationsService]
     });
+
+    store = TestBed.get(Store);
+
+    spyOn(store, 'dispatch').and.callThrough();
+
   });
 
   it('should be created', inject([NotificationsService], (service: NotificationsService) => {
@@ -14,15 +30,19 @@ describe('NotificationsService', () => {
   }));
 
   it('should create notification', () => {
-    const service: NotificationsService = TestBed.get(NotificationsService);
-    
-    service.showError('Error', 'Error detail');
+    const notification: Notification = {
+      severity: 'error',
+      summary: 'Test summary',
+      detail: 'Test detail'
+    };
 
-    service.getNotification().subscribe(
-      noti => {
-        expect(noti.detail).toEqual('Error detail');
-      }
-    );
+    const action = new NotificationsActions.ShowNotification(notification);
+
+    const service: NotificationsService = TestBed.get(NotificationsService);
+    service.showError(notification.summary, notification.detail);
+    expect(store.dispatch).toHaveBeenCalledWith(action);
+    expect(store).toBeDefined();
+
   });
 
 });

@@ -11,7 +11,7 @@ export class AppComponent {
   constructor(private notiService: NotificationsService) {}
 
   showError() {
-    this.notiService.showError('Error', 'Info in the component');
+    this.notiService.showError('Error', 'Error in the component');
   }
 
   showInfo() {

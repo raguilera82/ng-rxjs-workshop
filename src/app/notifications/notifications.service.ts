@@ -31,6 +31,7 @@ export class NotificationsService {
       summary: summary,
       detail: msg
     };
+    console.log('Lanzo el dispatch ' + notification.detail);
     this.store.dispatch(new NotificationsActions.ShowNotification(notification));
   }
 

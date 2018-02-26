@@ -17,6 +17,7 @@ export class PrimengNotificationComponent implements OnChanges {
   constructor() { }
 
   public ngOnChanges(): void {
+    console.log(this.notification);
     this.msgs = [];
     this.msgs = [...this.msgs, this.notification];
   }
