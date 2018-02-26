@@ -20,4 +20,4 @@ export class NotiComponent extends NotificationsComponent implements OnInit {
         this.service.showInfo('Info', 'Info in the noti component');
     }
 
-} 
+}
