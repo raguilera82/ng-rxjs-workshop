@@ -1,5 +1,3 @@
-<button (click)="showError()">Trigger Error</button>
-<button (click)="showInfo()">Trigger Info</button>
-<button (click)="showWarn()">Trigger Warn</button>
+<button (click)="showError()">Show Error</button>
 
-<app-primeng-notification [notification]="notification$ | async"></app-primeng-notification>
+<div>{{(notification$ | async)?.detail}}</div>

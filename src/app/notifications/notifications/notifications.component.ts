@@ -14,7 +14,7 @@ export class NotificationsComponent implements OnInit {
   msgs: Notification[];
   notification$: Observable<Notification>;
 
-  constructor(private service: NotificationsService) { }
+  constructor(public service: NotificationsService) { }
 
   ngOnInit() {
     this.notification$ = this.service.getNotification();
